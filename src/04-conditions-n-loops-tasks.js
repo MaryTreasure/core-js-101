@@ -190,6 +190,7 @@ function isInsideCircle(/* circle, point */) {
  */
 function findFirstSingleChar(str) {
   let result = null;
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < str.length; i++) {
     let count = 0;
     let pos = 0;
@@ -198,10 +199,11 @@ function findFirstSingleChar(str) {
       const foundPos = str.indexOf(str[i], pos);
       if (foundPos === -1) break;
       pos = foundPos + 1;
+      // eslint-disable-next-line no-plusplus
       count++;
     }
-    
-    
+
+
     if (count === 1) {
       result = str[i];
       break;
