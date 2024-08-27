@@ -51,8 +51,9 @@ function getCircleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  // eslint-disable-next-line no-undef
+  return (BigInt(value1) + BigInt(value2)) / BigInt(2);
 }
 
 /**
@@ -86,8 +87,8 @@ function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  return -(b / a);
 }
 
 
@@ -206,8 +207,18 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  let result = false;
+  // eslint-disable-next-line no-plusplus
+  for (let i = 1; i <= n; i++) {
+    if (i !== 1 && i !== n && (n % i === 0)) {
+      return false;
+    // eslint-disable-next-line no-else-return
+    } else {
+      result = true;
+    }
+  }
+  return result;
 }
 
 /**

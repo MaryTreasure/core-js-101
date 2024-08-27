@@ -52,8 +52,10 @@ function generateOdds(/* len */) {
  *    [0, 1, 2, 3, 4, 5] => [0, 1, 2, 3, 4, 5,   0, 1, 2, 3, 4, 5]
  *    [] => []
  */
-function doubleArray(/* arr */) {
-  throw new Error('Not implemented');
+function doubleArray(arr) {
+  const newArr = arr;
+
+  return newArr.concat(...arr);
 }
 
 
@@ -293,8 +295,15 @@ function propagateItemsByPositionIndex(/* arr */) {
  *   [ 1,2,3,4,5,6,7,8,9,10 ] => [ 10, 9, 8 ]
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
-function get3TopItems(/* arr */) {
-  throw new Error('Not implemented');
+function get3TopItems(arr) {
+  const sorted = arr.sort((a, b) => (b - a));
+
+  if (sorted.length > 3) {
+    return sorted.slice(0, 3);
+  // eslint-disable-next-line no-else-return
+  } else {
+    return sorted;
+  }
 }
 
 
@@ -311,8 +320,14 @@ function get3TopItems(/* arr */) {
  *   [ null, 1, 'elephant' ] => 1
  *   [ 1, '2' ] => 1
  */
-function getPositivesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getPositivesCount(arr) {
+  if (!arr.length) {
+    return 0;
+  }
+  const result = arr.filter((item) => (typeof item === 'number'));
+
+
+  return result.sort((a, b) => b - a)[0];
 }
 
 /**
