@@ -193,6 +193,7 @@ function findFirstSingleChar(str) {
   for (let i = 0; i < str.length; i++) {
     let count = 0;
     let pos = 0;
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       const foundPos = str.indexOf(str[i], pos);
       if (foundPos === -1) break;
