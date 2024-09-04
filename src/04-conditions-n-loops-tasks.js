@@ -141,8 +141,11 @@ function isTriangle(a, b, c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  if (rect1.left + rect1.width > rect2.left && rect1.top + rect1.height > rect2.top) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -172,8 +175,12 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  // eslint-disable-next-line max-len
+  if (((point.x - circle.center.x) ** 2) + ((point.y - circle.center.y) ** 2) < (circle.radius ** 2)) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -309,8 +316,24 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  const figures = ccn.toString().split('').map((item) => Number(item));
+  let sum = 0;
+  let second = false;
+  // eslint-disable-next-line no-plusplus
+  for (let i = figures.length - 1; i >= 0; i--) {
+    let figure = figures[i];
+    if (second) {
+      figure *= 2;
+      if (figure > 9) {
+        figure -= 9;
+      }
+    }
+    sum += figure;
+    second = !second;
+  }
+
+  return sum % 10 === 0;
 }
 
 /**
