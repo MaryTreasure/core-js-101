@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* *************************************************************************************************
  *                                                                                                *
  * Please read the following tutorial before implementing tasks:                                   *
@@ -498,8 +499,74 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+// eslint-disable-next-line consistent-return
+function evaluateTicTacToePosition(position) {
+  let index = '';
+  let count = 0;
+
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 3; i++) {
+    if (index === '') {
+      index = position[i][i];
+    } else if (index === position[i][i]) {
+      // eslint-disable-next-line no-plusplus
+      count++;
+    }
+    if (count === 2) {
+      return index;
+    }
+  }
+  count = 0;
+
+  for (let i = 0; i < 3; i++) {
+    count = 0;
+    index = '';
+    for (let j = 0; j < 3; j++) {
+      if (index === '') {
+        index = position[j][i];
+      } else if (index === position[j][i]) {
+        count++;
+      }
+      if (count === 2) {
+        return index;
+      }
+    }
+  }
+
+  count = 0;
+
+  for (let i = 0; i < 3; i++) {
+    count = 0;
+    index = '';
+
+    for (let j = 0; j < 3; j++) {
+      if (index === '') {
+        index = position[i][j];
+      } else if (index === position[i][j] && position[i][j] !== undefined) {
+        count++;
+      }
+    }
+
+    if (count === 2) {
+      return index;
+    }
+  }
+  count = 0;
+  index = '';
+  let j = position.length - 1;
+  for (let i = 0; i < 3; i++) {
+    if (index === '') {
+      index = position[i][j];
+      j--;
+    } else if (index === position[i][j]) {
+      count++;
+      j--;
+    }
+
+    if (count === 2) {
+      return index;
+    }
+  }
 }
 
 
